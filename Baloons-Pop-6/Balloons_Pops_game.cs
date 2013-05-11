@@ -135,7 +135,7 @@ namespace Balloons_Pops_game
                     break; 
                 }
                 
-                klasirane.Add(new NameValuePair(int.Parse(tableToSort[i, 0]),tableToSort[i,1]));
+                klasirane.Add(new NameValuePair(tableToSort[i, 0],int.Parse(tableToSort[i,1])));
                
             }
             
@@ -144,7 +144,7 @@ namespace Balloons_Pops_game
             for (int i = 0; i<klasirane.Count; ++i)
             {
                 NameValuePair slot = klasirane[i];
-                Console.WriteLine("{2}.   {0} with {1} moves.", slot.name, slot.val,i+1);
+                Console.WriteLine("{2}.   {0} with {1} moves.", slot.Name, slot.Value,i+1);
             }
             Console.WriteLine("----------------------------------");
 
