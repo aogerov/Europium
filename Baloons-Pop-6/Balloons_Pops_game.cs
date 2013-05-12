@@ -62,18 +62,22 @@ namespace Balloons_Pops_game
         static void checkDown(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row - 1;
-            int newColumn = column;
             try
             {
-                if (matrix[newRow, newColumn] == searchedItem)
+                if (matrix[newRow, column] == searchedItem)
                 {
-                    matrix[newRow, newColumn] = 0;
-                    checkDown(matrix, newRow, newColumn, searchedItem);
+                    matrix[newRow, column] = 0;
+                    checkDown(matrix, newRow, column, searchedItem);
                 }
-                else return;
+                else
+                { 
+                    return;
+                }
             }
             catch (IndexOutOfRangeException)
-            { return; }
+            { 
+                return; 
+            }
 
         }          
         static bool change(byte[,] matrixToModify, int rowAtm, int columnAtm)
