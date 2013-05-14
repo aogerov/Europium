@@ -10,7 +10,7 @@ namespace BalloonBoobsGame
     //Balloon Boobs It's me
     public class BalloonBoobs : Game
     {
-        public void checkLeft(byte[,] matrix, int row, int column, int searchedItem)
+        private void checkLeft(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row;
             int newColumn = column - 1;
@@ -27,7 +27,7 @@ namespace BalloonBoobsGame
 
         }
 
-        public void checkRight(byte[,] matrix, int row, int column, int searchedItem)
+        private void checkRight(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row;
             int newColumn = column + 1;
@@ -44,7 +44,8 @@ namespace BalloonBoobsGame
             { return; }
 
         }
-        public void checkUp(byte[,] matrix, int row, int column, int searchedItem)
+
+        private void checkUp(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row + 1;
             int newColumn = column;
@@ -61,7 +62,7 @@ namespace BalloonBoobsGame
             { return; }
         }
 
-        public void checkDown(byte[,] matrix, int row, int column, int searchedItem)
+        private void checkDown(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row - 1;
             int newColumn = column;
@@ -84,7 +85,7 @@ namespace BalloonBoobsGame
             }
         }
 
-        public bool change(byte[,] matrixToModify, int rowAtm, int columnAtm)
+        public bool boobsPoper(byte[,] matrixToModify, int rowAtm, int columnAtm)
         {
             if (matrixToModify[rowAtm, columnAtm] == 0)
             {
