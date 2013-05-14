@@ -9,6 +9,8 @@ namespace BalloonBoobsGame
     {
         public static void Main()
         {
+            BalloonBoobs game = new BalloonBoobs();
+
             string userInput = string.Empty;
 
             while (userInput != "EXIT")

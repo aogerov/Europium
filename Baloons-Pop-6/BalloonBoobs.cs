@@ -84,7 +84,7 @@ namespace BalloonBoobsGame
             }
         }
 
-        public bool change(byte[,] matrixToModify, int rowAtm, int columnAtm)
+        public bool BoobsPopper(byte[,] matrixToModify, int rowAtm, int columnAtm)
         {
             if (matrixToModify[rowAtm, columnAtm] == 0)
             {

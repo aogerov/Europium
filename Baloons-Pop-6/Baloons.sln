@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baloons", "Baloons.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{DA2D90E6-7D4F-4BDE-AA68-124DC59AF450}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaloonsPops", "..\BaloonsPops\BaloonsPops.csproj", "{1E3FEC2F-FF35-4478-B918-5988ADEA3699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaloonsPop", "BaloonsPop\BaloonsPop.csproj", "{6F0F56C9-8651-4729-B3B8-986FADED1D80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,26 @@ Global
 		{DA2D90E6-7D4F-4BDE-AA68-124DC59AF450}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DA2D90E6-7D4F-4BDE-AA68-124DC59AF450}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DA2D90E6-7D4F-4BDE-AA68-124DC59AF450}.Release|x86.ActiveCfg = Release|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1E3FEC2F-FF35-4478-B918-5988ADEA3699}.Release|x86.ActiveCfg = Release|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6F0F56C9-8651-4729-B3B8-986FADED1D80}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
