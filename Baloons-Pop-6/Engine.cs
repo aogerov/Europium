@@ -27,7 +27,7 @@ namespace BalloonBoobsGame
                     userMoves = 0;
                     break;
                 case "TOP":
-                    engine.sortAndPrintChartFive(topFive);
+                    engine.PrintTopFiveChart(topFive);
                     break;
                 default:
                     if ((temp.Length == 3) && (temp[0] >= '0' && temp[0] <= '9') && (temp[2] >= '0' && temp[2] <= '9') && (temp[1] == ' ' || temp[1] == '.' || temp[1] == ','))
@@ -47,12 +47,12 @@ namespace BalloonBoobsGame
                             return;
                         }
                         userMoves++;
-                        if (engine.doit(matrix))
+                        if (engine.MakeAMove(matrix))
                         {
                             Console.WriteLine("Gratz ! You completed it in {0} moves.", userMoves);
-                            if (engine.signIfSkilled(topFive, userMoves))
+                            if (engine.IsPlayerResultInTopFive(topFive, userMoves))
                             {
-                                engine.sortAndPrintChartFive(topFive);
+                                engine.PrintTopFiveChart(topFive);
                             }
                             else
                             {
