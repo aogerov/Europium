@@ -93,7 +93,7 @@ namespace BalloonBoobsGame
             return false;
         }
 
-        public bool doit(byte[,] matrix)
+        public bool MakeAMove(byte[,] matrix)
         {
             bool isWinner = true;
             Stack<byte> stek = new Stack<byte>();

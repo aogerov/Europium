@@ -7,9 +7,8 @@ namespace BalloonBoobsGame
 {
     class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-
             string userInput = string.Empty;
 
             while (userInput != "EXIT")
