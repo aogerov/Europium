@@ -7,10 +7,10 @@ using System.Collections.Generic;
 
 namespace BalloonBoobsGame
 {
-    //Balloon Boobs It's me
+    //Balloon Boobs
     public class BalloonBoobs : Game
     {
-        public void checkLeft(byte[,] matrix, int row, int column, int searchedItem)
+        private void checkLeft(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row;
             int newColumn = column - 1;
@@ -27,7 +27,7 @@ namespace BalloonBoobsGame
 
         }
 
-        public void checkRight(byte[,] matrix, int row, int column, int searchedItem)
+        private void checkRight(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row;
             int newColumn = column + 1;
@@ -44,7 +44,8 @@ namespace BalloonBoobsGame
             { return; }
 
         }
-        public void checkUp(byte[,] matrix, int row, int column, int searchedItem)
+
+        private void checkUp(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row + 1;
             int newColumn = column;
@@ -61,7 +62,7 @@ namespace BalloonBoobsGame
             { return; }
         }
 
-        public void checkDown(byte[,] matrix, int row, int column, int searchedItem)
+        private void checkDown(byte[,] matrix, int row, int column, int searchedItem)
         {
             int newRow = row - 1;
             int newColumn = column;
