@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace BalloonBoobsGame
 {
-    //stupid tool
+    //stupid tools
     //Balloon Boobs
     public class BalloonBoobs : Game
     {
