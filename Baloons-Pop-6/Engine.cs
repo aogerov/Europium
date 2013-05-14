@@ -3,46 +3,42 @@ using System.Linq;
 
 namespace BalloonBoobsGame
 {
-    class Engine
+    public class Engine
     {
         private static BalloonBoobs engine = new BalloonBoobs();
         private static string[,] topFive = new string[5, 2];
+        private static int userMoves = 0;
 
         private static byte matrixRows = 5;
         private static byte matrixCols = 10;
         private static byte[,] matrix = engine.gen(matrixRows, matrixCols);
 
-        private static char minUserInputValue = '0';
-        private static char maxUserInputValue = '9';
+        private static int minAllowedValue = 0;
+        private static int maxAllowedValue = 9;
         private static char[] separators = new char[] { ' ', '.', ',' };
 
         public static void ProcessGame(string userInput)
         {
-            int userMoves = 0;
+            engine.printMatrix(matrix);
+            userInput = userInput.ToUpper().Trim();
 
             switch (userInput)
             {
                 case "RESTART":
-                    matrix = engine.gen(matrixRows, matrixCols);
-                    engine.printMatrix(matrix);
-                    userMoves = 0;
+                    RestartGame();
                     break;
                 case "TOP":
-                    engine.PrintTopFiveChart(topFive);
+                    engine.PrintTopChart(topFive);
                     break;
                 default:
-                    bool isValidUserInput = ValidateUserInput(userInput);
-                    if (isValidUserInput)
+                    bool validInput = ValidateUserInput(userInput);
+                    
+                    if (validInput)
                     {
                         int userRow = int.Parse(userInput[0].ToString());
-                        if (userRow >= matrixRows)
-                        {
-                            Console.WriteLine("Wrong input ! Try Again ! ");
-                            return;
-                        }
+                        int userCol = int.Parse(userInput[2].ToString());
 
-                        int userColumn = int.Parse(userInput[2].ToString());
-                        if (engine.change(matrix, userRow, userColumn))
+                        if (engine.change(matrix, userRow, userCol))
                         {
                             Console.WriteLine("cannot pop missing ballon!");
                             return;
@@ -56,7 +52,7 @@ namespace BalloonBoobsGame
 
                             if (engine.IsPlayerResultInTopFive(topFive, userMoves))
                             {
-                                engine.PrintTopFiveChart(topFive);
+                                engine.PrintTopChart(topFive);
                             }
                             else
                             {
@@ -67,7 +63,6 @@ namespace BalloonBoobsGame
                             userMoves = 0;
                         }
 
-                        engine.printMatrix(matrix);
                         break;
                     }
                     else
@@ -77,16 +72,33 @@ namespace BalloonBoobsGame
                     }
             }
         }
+  
+        private static void RestartGame()
+        {
+            matrix = engine.gen(matrixRows, matrixCols);
+            engine.printMatrix(matrix);
+            userMoves = 0;
+        }
 
         private static bool ValidateUserInput(string userInput)
         {
-            bool hasCorrectRow = (userInput[0] >= minUserInputValue && userInput[0] <= maxUserInputValue);
-            bool hasCorrectCol = (userInput[2] >= minUserInputValue && userInput[2] <= maxUserInputValue);
-            bool hasLenghtThree = (userInput.Length == 3);
-            bool hasCorrectSeparator = (userInput[1] == separators[0] ||
-                userInput[1] == separators[0] || userInput[1] == separators[0]);
+            int row = userInput[0];
+            int col = userInput[2];
+            char separator = userInput[1];
 
-            bool isValidUserInput = hasCorrectRow && hasCorrectCol && hasLenghtThree && hasCorrectSeparator;
+            bool isInRowRange = row >= 0 && row < matrixRows;
+            bool isInColRange = col >= 0 && col < matrixCols;
+
+            bool hasValidRowValue = row >= minAllowedValue && row <= maxAllowedValue;
+            bool hasValidColValue = col >= minAllowedValue && col <= maxAllowedValue;
+            
+            bool hasLenghtThree = userInput.Length == 3;
+            bool hasCorrectSeparator = separator == separators[0] ||
+                separator == separators[1] || separator == separators[2];
+
+            bool isValidUserInput = isInRowRange && isInColRange &&
+                hasValidRowValue && hasValidColValue && 
+                hasLenghtThree && hasCorrectSeparator;
             return isValidUserInput;
         }
     }

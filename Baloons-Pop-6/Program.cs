@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalloonBoobsGame
 {
-    class Program
+    public class Program
     {
         public static void Main()
         {
@@ -15,10 +15,10 @@ namespace BalloonBoobsGame
             {
                 Console.WriteLine("Enter a row and column: ");
                 userInput = Console.ReadLine();
-                userInput = userInput.ToUpper().Trim();
 
                 Engine.ProcessGame(userInput);
             }
+
             Console.WriteLine("Good Bye! ");
         }
     }

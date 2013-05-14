@@ -134,7 +134,7 @@ namespace BalloonBoobsGame
             return isWinner;
         }
 
-        private void PrintTopChart(string[,] playerResult)
+        public void PrintTopChart(string[,] playerResult)
         {
             List<NameValuePair> topResults = new List<NameValuePair>();
             for (int i = 0; i < 5; ++i)
