@@ -19,7 +19,6 @@ namespace BalloonBoobsGame
 
         public static void ProcessGame(string userInput)
         {
-            engine.printMatrix(matrix);
             userInput = userInput.ToUpper().Trim();
 
             switch (userInput)
@@ -63,11 +62,12 @@ namespace BalloonBoobsGame
                             userMoves = 0;
                         }
 
+                        engine.printMatrix(matrix);
                         break;
                     }
                     else
                     {
-                        Console.WriteLine("Wrong input ! Try Again ! ");
+                        Console.WriteLine("Wrong input! Try Again!");
                         break;
                     }
             }
@@ -82,8 +82,8 @@ namespace BalloonBoobsGame
 
         private static bool ValidateUserInput(string userInput)
         {
-            int row = userInput[0];
-            int col = userInput[2];
+            int row = int.Parse(userInput[0].ToString());
+            int col = int.Parse(userInput[2].ToString());
             char separator = userInput[1];
 
             bool isInRowRange = row >= 0 && row < matrixRows;
