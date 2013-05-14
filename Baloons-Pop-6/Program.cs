@@ -9,6 +9,7 @@ namespace BalloonBoobsGame
     {
         public static void Main()
         {
+            //fatal error added
             BalloonBoobs game = new BalloonBoobs();
 
             string userInput = string.Empty;
