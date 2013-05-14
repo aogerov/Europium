@@ -10,16 +10,15 @@ namespace BalloonBoobsGame
 
         private static byte matrixRows = 5;
         private static byte matrixCols = 10;
+        private static byte[,] matrix = engine.gen(matrixRows, matrixCols);
 
-        private static int userMoves;
         private static char minUserInputValue = '0';
         private static char maxUserInputValue = '9';
         private static char[] separators = new char[] { ' ', '.', ',' };
 
         public static void ProcessGame(string userInput)
         {
-            byte[,] matrix = engine.gen(matrixRows, matrixCols);
-            engine.printMatrix(matrix);
+            int userMoves = 0;
 
             switch (userInput)
             {
@@ -29,7 +28,7 @@ namespace BalloonBoobsGame
                     userMoves = 0;
                     break;
                 case "TOP":
-                    engine.sortAndPrintChartFive(topFive);
+                    engine.PrintTopFiveChart(topFive);
                     break;
                 default:
                     bool isValidUserInput = ValidateUserInput(userInput);
@@ -55,9 +54,9 @@ namespace BalloonBoobsGame
                         {
                             Console.WriteLine("Gratz ! You completed it in {0} moves.", userMoves);
 
-                            if (engine.signIfSkilled(topFive, userMoves))
+                            if (engine.IsPlayerResultInTopFive(topFive, userMoves))
                             {
-                                engine.sortAndPrintChartFive(topFive);
+                                engine.PrintTopFiveChart(topFive);
                             }
                             else
                             {
@@ -84,7 +83,8 @@ namespace BalloonBoobsGame
             bool hasCorrectRow = (userInput[0] >= minUserInputValue && userInput[0] <= maxUserInputValue);
             bool hasCorrectCol = (userInput[2] >= minUserInputValue && userInput[2] <= maxUserInputValue);
             bool hasLenghtThree = (userInput.Length == 3);
-            bool hasCorrectSeparator = (userInput[1] == separators[0] || userInput[1] == separators[0] || userInput[1] == separators[0]);
+            bool hasCorrectSeparator = (userInput[1] == separators[0] ||
+                userInput[1] == separators[0] || userInput[1] == separators[0]);
 
             bool isValidUserInput = hasCorrectRow && hasCorrectCol && hasLenghtThree && hasCorrectSeparator;
             return isValidUserInput;

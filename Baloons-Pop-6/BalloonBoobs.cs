@@ -117,16 +117,15 @@ namespace BalloonBoobsGame
 
                 for (int k = columnLenght - 1; k >= 0; k--)
                 {
-                    matrix[k, j] = stek.Pop();
-                    //try
-                    //{
-                        //matrix[k, j] = stek.Pop();
-                    //}
+                    try
+                    {
+                        matrix[k, j] = stek.Pop();
+                    }
 
-                    //catch (Exception)
-                    //{
-                    //    matrix[k, j] = 0;
-                    //}
+                    catch (Exception)
+                    {
+                        matrix[k, j] = 0;
+                    }
                 }
             }
 
