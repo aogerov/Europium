@@ -135,7 +135,7 @@ namespace BalloonBoobsGame
             return isWinner;
         }
 
-        public void SortTopChart(string[,] playerResult)
+        private void PrintTopChart(string[,] playerResult)
         {
             List<NameValuePair> topResults = new List<NameValuePair>();
             for (int i = 0; i < 5; ++i)
@@ -149,11 +149,7 @@ namespace BalloonBoobsGame
             }
 
             topResults.Sort();
-            PrintTopChart(topResults);
-        }
-  
-        private void PrintTopChart(List<NameValuePair> topResults)
-        {
+
             Console.WriteLine("---------TOP FIVE CHART-----------");
             for (int rank = 0; rank < topResults.Count; ++rank)
             {
