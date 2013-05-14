@@ -7,8 +7,6 @@ using System.Collections.Generic;
 
 namespace BalloonBoobsGame
 {
-    //stupid tools
-    //Balloon Boobs
     public class BalloonBoobs : Game
     {
         private void checkLeft(byte[,] matrix, int row, int column, int searchedItem)
