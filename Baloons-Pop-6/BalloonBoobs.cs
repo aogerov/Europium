@@ -105,27 +105,28 @@ namespace BalloonBoobsGame
             bool isWinner = true;
             Stack<byte> stek = new Stack<byte>();
             int columnLenght = matrix.GetLength(0);
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            int rowLenght = matrix.GetLength(1);
+            for (int row = 0; row < rowLenght; row++)
             {
-                for (int i = 0; i < columnLenght; i++)
+                for (int col = 0; col < columnLenght; col++)
                 {
-                    if (matrix[i, j] != 0)
+                    if (matrix[col, row] != 0)
                     {
                         isWinner = false;
-                        stek.Push(matrix[i, j]);
+                        stek.Push(matrix[col, row]);
                     }
                 }
 
-                for (int k = columnLenght - 1; k >= 0; k--)
+                for (int col = columnLenght - 1; col >= 0; col--)
                 {
                     try
                     {
-                        matrix[k, j] = stek.Pop();
+                        matrix[col, row] = stek.Pop();
                     }
 
                     catch (Exception)
                     {
-                        matrix[k, j] = 0;
+                        matrix[col, row] = 0;
                     }
                 }
             }
@@ -133,7 +134,7 @@ namespace BalloonBoobsGame
             return isWinner;
         }
 
-        public void PrintTopFiveChart(string[,] playerResult)
+        public void SortTopChart(string[,] playerResult)
         {
             List<NameValuePair> topResults = new List<NameValuePair>();
             for (int i = 0; i < 5; ++i)
@@ -147,11 +148,16 @@ namespace BalloonBoobsGame
             }
 
             topResults.Sort();
+            PrintTopChart(topResults);
+        }
+  
+        private void PrintTopChart(List<NameValuePair> topResults)
+        {
             Console.WriteLine("---------TOP FIVE CHART-----------");
-            for (int i = 0; i < topResults.Count; ++i)
+            for (int rank = 0; rank < topResults.Count; ++rank)
             {
-                NameValuePair slot = topResults[i];
-                Console.WriteLine("{2}.   {0} with {1} moves.", slot.Name, slot.Value, i + 1);
+                NameValuePair slot = topResults[rank];
+                Console.WriteLine("{0}.   {1} with {2} moves.", rank + 1, slot.Name, slot.Value);
             }
 
             Console.WriteLine("----------------------------------");
@@ -162,14 +168,11 @@ namespace BalloonBoobsGame
             bool isInTopFive = false;
             int worstMoves = 0;
             int worstMovesChartPosition = 0;
-            for (int i = 0; i < 5; i++)
+            for (int rank = 0; rank < 5; rank++)
             {
-                if (chart[i, 0] == null)
+                if (chart[rank, 0] == null)
                 {
-                    Console.WriteLine("Type in your name.");
-                    string currentPlayerName = Console.ReadLine();
-                    chart[i, 0] = points.ToString();
-                    chart[i, 1] = currentPlayerName;
+                    EnterPlayerName(chart, rank, points);
                     isInTopFive = true;
                     break;
                 }
@@ -177,26 +180,35 @@ namespace BalloonBoobsGame
 
             if (isInTopFive == false)
             {
-                for (int i = 0; i < 5; i++)
+                for (int rank = 0; rank < 5; rank++)
                 {
-                    if (int.Parse(chart[i, 0]) > worstMoves)
+                    if (int.Parse(chart[rank, 0]) > worstMoves)
                     {
-                        worstMovesChartPosition = i;
-                        worstMoves = int.Parse(chart[i, 0]);
+                        worstMovesChartPosition = rank;
+                        worstMoves = int.Parse(chart[rank, 0]);
                     }
                 }
             }
 
             if (points < worstMoves && isInTopFive == false)
             {
-                Console.WriteLine("Type in your name.");
-                string currentPlayerName = Console.ReadLine();
-                chart[worstMovesChartPosition, 0] = points.ToString();
-                chart[worstMovesChartPosition, 1] = currentPlayerName;
+                EnterPlayerName(chart, worstMovesChartPosition, points);
                 isInTopFive = true;
             }
 
             return isInTopFive;
+        }
+  
+        private void EnterPlayerName(string[,] chart, int rank, int points)
+        {
+            Console.WriteLine("Type in your name.");
+            string currentPlayerName = Console.ReadLine();
+            if (currentPlayerName == null)
+            {
+                currentPlayerName = "Anonymous";
+            }
+            chart[rank, 0] = points.ToString();
+            chart[rank, 1] = currentPlayerName;
         }
     }
 }
