@@ -8,7 +8,7 @@
     <ProjectGuid>{3B262708-74F1-4794-8F0C-C96EB718A8A2}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleApplication1</RootNamespace>
+    <RootNamespace>Balloons_Pops_game</RootNamespace>
     <AssemblyName>ConsoleApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Balloons_Pops_game.cs" />
+    <Compile Include="BalloonsPops.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="NameValuePair.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="TopFive.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

@@ -1,6 +1,6 @@
 using System;
 
-namespace Balloons_Pops_game
+namespace BalloonsPopsGame
 {
     public class NameValuePair : IComparable<NameValuePair>
     {

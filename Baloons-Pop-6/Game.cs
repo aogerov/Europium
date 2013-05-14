@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Balloons_Pops_game
+namespace BalloonsPopsGame
 {
     public class Game
     {
-        public static void printMatrix(byte[,] matrix)
+        public void printMatrix(byte[,] matrix)
         {
             Console.Write("    ");
             for (byte column = 0; column < matrix.GetLongLength(1); column++)
@@ -54,7 +54,7 @@ namespace Balloons_Pops_game
         }
 
 
-        public static byte[,] gen(byte rows, byte columns)
+        public byte[,] gen(byte rows, byte columns)
         {
             byte[,] temp = new byte[rows, columns];
             Random randNumber = new Random();
