@@ -37,7 +37,11 @@ namespace BalloonBoobsGame
                         int userRow = int.Parse(userInput[0].ToString());
                         int userCol = int.Parse(userInput[2].ToString());
 
+<<<<<<< HEAD
                         if (engine.boobsPoper(matrix, userRow, userCol))
+=======
+                        if (engine.change(matrix, userRow, userCol))
+>>>>>>> 0b5f390917cc80f1cb749a5f77470f35464d026e
                         {
                             Console.WriteLine("cannot pop missing ballon!");
                             return;
