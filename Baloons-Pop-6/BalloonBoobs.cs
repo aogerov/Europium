@@ -137,8 +137,6 @@ namespace BalloonBoobsGame
         }
 
         public void PrintTopChart(string[,] playerResult)
-<<<<<<< HEAD
-=======
         {
             var topResults = SortChart(playerResult);
 
@@ -153,7 +151,6 @@ namespace BalloonBoobsGame
         }
   
         private List<NameValuePair> SortChart(string[,] playerResult)
->>>>>>> 0b5f390917cc80f1cb749a5f77470f35464d026e
         {
             List<NameValuePair> topResults = new List<NameValuePair>();
             for (int i = 0; i < 5; ++i)
@@ -167,7 +164,6 @@ namespace BalloonBoobsGame
             }
 
             topResults.Sort();
-<<<<<<< HEAD
 
             Console.WriteLine("---------TOP FIVE CHART-----------");
             for (int rank = 0; rank < topResults.Count; ++rank)
@@ -177,9 +173,7 @@ namespace BalloonBoobsGame
             }
 
             Console.WriteLine("----------------------------------");
-=======
             return topResults;
->>>>>>> 0b5f390917cc80f1cb749a5f77470f35464d026e
         }
 
         public bool IsPlayerResultInTopFive(string[,] chart, int points)
