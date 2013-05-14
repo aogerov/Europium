@@ -5,9 +5,9 @@ using System.Collections.Generic;
 // test changes by Alexander
 // Test - Fani
 
-namespace BalloonsPopsGame
+namespace BalloonBoobsGame
 {
-    public class BalloonsPops : Game
+    public class BalloonBoobs : Game
     {
         public void checkLeft(byte[,] matrix, int row, int column, int searchedItem)
             {
