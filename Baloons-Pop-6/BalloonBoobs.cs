@@ -10,20 +10,21 @@ namespace BalloonBoobsGame
     public class BalloonBoobs : Game
     {
         public void checkLeft(byte[,] matrix, int row, int column, int searchedItem)
+        {
+            int newRow = row;
+            int newColumn = column - 1;
+            try
             {
-                int newRow = row;
-                int newColumn = column - 1;
-                try
+                if (matrix[newRow, newColumn] == searchedItem)
                 {
-                    if (matrix[newRow, newColumn] == searchedItem)
-                    {
-                        matrix[newRow, newColumn] = 0; checkLeft(matrix, newRow, newColumn, searchedItem);
-                    }
-                    else return;
-                }catch(IndexOutOfRangeException)
-                    {return;} 
-                    
+                    matrix[newRow, newColumn] = 0; checkLeft(matrix, newRow, newColumn, searchedItem);
+                }
+                else return;
             }
+            catch (IndexOutOfRangeException)
+            { return; }
+
+        }
 
         public void checkRight(byte[,] matrix, int row, int column, int searchedItem)
         {
@@ -44,8 +45,8 @@ namespace BalloonBoobsGame
         }
         public void checkUp(byte[,] matrix, int row, int column, int searchedItem)
         {
-            int newRow = row+1;
-            int newColumn = column ;
+            int newRow = row + 1;
+            int newColumn = column;
             try
             {
                 if (matrix[newRow, newColumn] == searchedItem)
@@ -57,7 +58,7 @@ namespace BalloonBoobsGame
             }
             catch (IndexOutOfRangeException)
             { return; }
-			        }
+        }
 
         public void checkDown(byte[,] matrix, int row, int column, int searchedItem)
         {
@@ -77,8 +78,8 @@ namespace BalloonBoobsGame
             }
 
             catch (IndexOutOfRangeException)
-            { 
-                return; 
+            {
+                return;
             }
         }
 
@@ -86,7 +87,7 @@ namespace BalloonBoobsGame
         {
             if (matrixToModify[rowAtm, columnAtm] == 0)
             {
-                 return true;
+                return true;
             }
             byte searchedTarget = matrixToModify[rowAtm, columnAtm];
             matrixToModify[rowAtm, columnAtm] = 0;
@@ -134,9 +135,7 @@ namespace BalloonBoobsGame
 
         public void PrintTopFiveChart(string[,] playerResult)
         {
-
             List<NameValuePair> topResults = new List<NameValuePair>();
-
             for (int i = 0; i < 5; ++i)
             {
                 if (playerResult[i, 0] == null)
@@ -145,7 +144,6 @@ namespace BalloonBoobsGame
                 }
 
                 topResults.Add(new NameValuePair(playerResult[i, 0], int.Parse(playerResult[i, 1])));
-
             }
 
             topResults.Sort();
@@ -155,22 +153,23 @@ namespace BalloonBoobsGame
                 NameValuePair slot = topResults[i];
                 Console.WriteLine("{2}.   {0} with {1} moves.", slot.Name, slot.Value, i + 1);
             }
+
             Console.WriteLine("----------------------------------");
         }
 
-        public bool IsPlayerResultInTopFive(string[,] Chart, int points)
+        public bool IsPlayerResultInTopFive(string[,] chart, int points)
         {
             bool isInTopFive = false;
             int worstMoves = 0;
             int worstMovesChartPosition = 0;
             for (int i = 0; i < 5; i++)
             {
-                if (Chart[i, 0] == null)
+                if (chart[i, 0] == null)
                 {
                     Console.WriteLine("Type in your name.");
                     string currentPlayerName = Console.ReadLine();
-                    Chart[i, 0] = points.ToString();
-                    Chart[i, 1] = currentPlayerName;
+                    chart[i, 0] = points.ToString();
+                    chart[i, 1] = currentPlayerName;
                     isInTopFive = true;
                     break;
                 }
@@ -180,10 +179,10 @@ namespace BalloonBoobsGame
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    if (int.Parse(Chart[i, 0]) > worstMoves)
+                    if (int.Parse(chart[i, 0]) > worstMoves)
                     {
                         worstMovesChartPosition = i;
-                        worstMoves = int.Parse(Chart[i, 0]);
+                        worstMoves = int.Parse(chart[i, 0]);
                     }
                 }
             }
@@ -191,9 +190,9 @@ namespace BalloonBoobsGame
             if (points < worstMoves && isInTopFive == false)
             {
                 Console.WriteLine("Type in your name.");
-                string tempUserName = Console.ReadLine();
-                Chart[worstMovesChartPosition, 0] = points.ToString();
-                Chart[worstMovesChartPosition, 1] = tempUserName;
+                string currentPlayerName = Console.ReadLine();
+                chart[worstMovesChartPosition, 0] = points.ToString();
+                chart[worstMovesChartPosition, 1] = currentPlayerName;
                 isInTopFive = true;
             }
 
