@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace BalloonBoobsGame
 {
-    //Balloon Boobs It's me
+    //Balloon Boobs
     public class BalloonBoobs : Game
     {
         public void checkLeft(byte[,] matrix, int row, int column, int searchedItem)
