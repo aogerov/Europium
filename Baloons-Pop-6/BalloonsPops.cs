@@ -87,6 +87,7 @@ namespace Balloons
                     }
                     else
                     {
+                        //throw exeption
                         Console.WriteLine("Wrong input! Try Again!");
                         break;
                     }
