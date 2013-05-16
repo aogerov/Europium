@@ -50,7 +50,7 @@ namespace BaloonsTests
         public void AsStringTest()
         {
             int[,] testMatrix = new int[,]{
-                { 1, 2, 3},
+                { 1, 0, 3},
                 { 1, 3, 3}
             };
 
@@ -60,7 +60,7 @@ namespace BaloonsTests
             sb.Append("\r\n   ");
             sb.Append("-------");
             sb.Append("\r\n");
-            sb.Append("0 | 1 2 3 | ");
+            sb.Append("0 | 1   3 | ");
             sb.Append("\r\n");
             sb.Append("1 | 1 3 3 | ");
             sb.Append("\r\n");
@@ -71,6 +71,27 @@ namespace BaloonsTests
             
             Assert.AreEqual(expected, actual);
 
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AsStringNullTest()
+        {
+            Board.AsString(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void DropDownBaloonsNullTest()
+        {
+            Board.DropDownBaloons(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GenerateWithNegativeValuesTest()
+        {
+            Board.Generate(-1, 2, 1, 2);
         }
     }
 }
