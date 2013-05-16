@@ -28,9 +28,9 @@ namespace Balloons
                 {
                     ProcessGame(userInput, ref matrix, chart, ref userMoves);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    Console.WriteLine("Wrong input! Try Again!");
+                    Console.WriteLine("Wrong input! Try Again!" + ex.Message);
                 }
             }
         }
@@ -105,7 +105,6 @@ namespace Balloons
             int cols = 10;
             int startValue = 1;
             int endValue = 5;
-
             int[,] matrix = Board.Generate(rows, cols, startValue, endValue);
 
             return matrix;
@@ -113,6 +112,11 @@ namespace Balloons
 
         public static void PrintBoard(int[,] matrix)
         {
+            if (matrix == null)
+            {
+                throw new NullReferenceException("Matrix input can't have null value.");
+            }
+
             string matrixAsString = Board.AsString(matrix);
             Console.WriteLine(matrixAsString);
         }
