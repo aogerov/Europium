@@ -53,6 +53,7 @@
     <Compile Include="BalloonsPopsTests.cs" />
     <Compile Include="BoardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PopperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Baloons-Pop-6\Baloons.csproj">
