@@ -23,12 +23,26 @@ namespace Balloons
                 Console.WriteLine("Enter a row and column: ");
                 userInput = Console.ReadLine();
                 userInput = userInput.ToUpper().Trim();
-                ProcessGame(userInput, ref matrix, chart, ref userMoves);
+
+                try
+                {
+                    ProcessGame(userInput, ref matrix, chart, ref userMoves);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Wrong input! Try Again!");
+                }
             }
         }
 
         public static void ProcessGame(string userInput, ref int[,] matrix, IChart chart, ref int userMoves)
         {
+            if (userInput == null || userInput == string.Empty
+                || matrix == null || chart == null)
+            {
+                throw new ArgumentNullException("Input is null or with with empty value.");
+            }
+
             switch (userInput)
             {
                 case "RESTART":
@@ -46,51 +60,42 @@ namespace Balloons
                     break;
 
                 default:
-                    bool isValidInput = ValidateInput(userInput, matrix);
-                    if (isValidInput)
+                    ValidateInput(userInput, matrix);
+                    userMoves++;
+
+                    bool baloonExists = CheckForBaloon(userInput, matrix);
+                    if (baloonExists)
                     {
-                        userMoves++;
-
-                        bool baloonExists = CheckForBaloon(userInput, matrix);
-                        if (baloonExists)
-                        {
-                            PopBaloons(userInput, ref matrix);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Cannot pop missing ballon!");
-                        }
-
-                        bool allBaloonsArePoped = CheckForGameOver(matrix);
-                        if (allBaloonsArePoped)
-                        {
-                            Console.WriteLine("Gratz! You completed it in {0} moves.", userMoves);
-
-                            bool isForChart = chart.GoodEnoughForChart(userMoves);
-                            if (isForChart)
-                            {
-                                chart.AddToChart(userMoves);
-                                chart.SortChart();
-                                chart.PrintChart();
-                            }
-                            else
-                            {
-                                Console.WriteLine("I am sorry you are not skillful enough for TopFive chart!");
-                            }
-
-                            matrix = GenerateBoard();
-                            userMoves = 0;
-                        }
-
-                        PrintBoard(matrix);
-                        break;
+                        PopBaloons(userInput, ref matrix);
                     }
                     else
                     {
-                        //throw exeption
-                        Console.WriteLine("Wrong input! Try Again!");
-                        break;
+                        Console.WriteLine("Cannot pop missing ballon!");
                     }
+
+                    bool allBaloonsArePoped = CheckForGameOver(matrix);
+                    if (allBaloonsArePoped)
+                    {
+                        Console.WriteLine("Gratz! You completed it in {0} moves.", userMoves);
+
+                        bool isForChart = chart.GoodEnoughForChart(userMoves);
+                        if (isForChart)
+                        {
+                            chart.AddToChart(userMoves);
+                            chart.SortChart();
+                            chart.PrintChart();
+                        }
+                        else
+                        {
+                            Console.WriteLine("I am sorry you are not skillful enough for TopFive chart!");
+                        }
+
+                        matrix = GenerateBoard();
+                        userMoves = 0;
+                    }
+
+                    PrintBoard(matrix);
+                    break;
             }
         }
 
@@ -112,42 +117,39 @@ namespace Balloons
             Console.WriteLine(matrixAsString);
         }
 
-        public static bool ValidateInput(string userInput, int[,] matrix)
+        public static void ValidateInput(string userInput, int[,] matrix)
         {
-            bool isValid = true;
-
             if (userInput.Length != 3)
             {
-                isValid = false;
+                throw new ArgumentException("Row and col selection should have lenght 3.");
             }
 
             if (userInput[0] < '0' || userInput[0] > '9')
             {
-                isValid = false;
+                throw new ArgumentOutOfRangeException("Row need has to be in the range 0 to 9 incl.");
             }
 
             if (userInput[2] < '0' && userInput[2] > '9')
             {
-                isValid = false;
+                throw new ArgumentOutOfRangeException("Col need has to be in the range 0 to 9 incl.");
             }
 
             if (!(userInput[1] != ' ' || userInput[1] != '.' || userInput[1] != ','))
             {
-                isValid = false;
+                throw new ArgumentException("Invalid user separator, allowed values are ' ' , ',' and '.'");
             }
 
-            if (isValid)
+            int row = int.Parse(userInput[0].ToString());
+            if (row > matrix.GetLength(0))
             {
-                int row = int.Parse(userInput[0].ToString());
-                int col = int.Parse(userInput[2].ToString());
-
-                if (row > matrix.GetLength(0) || col > matrix.GetLength(1))
-                {
-                    isValid = false;
-                }
+                throw new ArgumentOutOfRangeException("Row value should be lower than matrix row length.");
             }
-
-            return isValid;
+            
+            int col = int.Parse(userInput[2].ToString());
+            if (col > matrix.GetLength(1))
+            {
+                throw new ArgumentOutOfRangeException("Col value should be lower than matrix row length.");
+            }
         }
 
         public static bool CheckForBaloon(string userInput, int[,] matrix)

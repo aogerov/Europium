@@ -7,6 +7,7 @@ namespace Balloons
     {
         public static int[,] Generate(int rows, int cols, int startValue, int endValue)
         {
+            //throw exeption for negative values or missing ones
             int[,] matrix = new int[rows, cols];
             Random randNumber = new Random();
             
