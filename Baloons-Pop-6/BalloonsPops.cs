@@ -123,6 +123,16 @@ namespace Balloons
 
         public static void ValidateInput(string userInput, int[,] matrix)
         {
+            if (userInput == null || matrix == null)
+            {
+                throw new ArgumentNullException("Input can't have null value.");
+            }
+
+            if (userInput == string.Empty)
+            {
+                throw new ArgumentException("User input is empty.");
+            }
+
             if (userInput.Length != 3)
             {
                 throw new ArgumentException("Row and col selection should have lenght 3.");
