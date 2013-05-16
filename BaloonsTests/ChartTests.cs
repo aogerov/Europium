@@ -12,12 +12,12 @@ namespace BaloonsTests
         public void PrintChartTest()
         {
             Chart chartTest = new Chart();
-            chartTest.AddToChart(15);
-            chartTest.AddToChart(14);
-            chartTest.AddToChart(13);
-            chartTest.AddToChart(12);
-            chartTest.AddToChart(11);
-            chartTest.AddToChart(18);
+            chartTest.AddToChart("Pesho", 15);
+            chartTest.AddToChart("Pesho", 14);
+            chartTest.AddToChart("Pesho", 13);
+            chartTest.AddToChart("Pesho", 12);
+            chartTest.AddToChart("Pesho", 11);
+            chartTest.AddToChart("Pesho", 18);
 
             string actual = chartTest.PrintChart();
 
@@ -39,12 +39,12 @@ namespace BaloonsTests
         public void SortChartTest()
         {
             Chart chartTest = new Chart();
-            chartTest.AddToChart(15);
-            chartTest.AddToChart(14);
-            chartTest.AddToChart(13);
-            chartTest.AddToChart(12);
-            chartTest.AddToChart(11);
-            chartTest.AddToChart(18);
+            chartTest.AddToChart("Pesho", 15);
+            chartTest.AddToChart("Pesho", 14);
+            chartTest.AddToChart("Pesho", 13);
+            chartTest.AddToChart("Pesho", 12);
+            chartTest.AddToChart("Pesho", 11);
+            chartTest.AddToChart("Pesho", 18);
 
             chartTest.SortChart();
             string actual = chartTest.PrintChart();
@@ -66,12 +66,12 @@ namespace BaloonsTests
         public void GoodEnoughForChartTest()
         {
             Chart chartTest = new Chart();
-            chartTest.AddToChart(15);
-            chartTest.AddToChart(14);
-            chartTest.AddToChart(13);
-            chartTest.AddToChart(12);
-            chartTest.AddToChart(11);
-            chartTest.AddToChart(18);
+            chartTest.AddToChart("Pesho", 15);
+            chartTest.AddToChart("Pesho", 14);
+            chartTest.AddToChart("Pesho", 13);
+            chartTest.AddToChart("Pesho", 12);
+            chartTest.AddToChart("Pesho", 11);
+            chartTest.AddToChart("Pesho", 18);
 
             chartTest.SortChart();
 
@@ -84,12 +84,12 @@ namespace BaloonsTests
         public void GoodEnoughForChartTest2()
         {
             Chart chartTest = new Chart();
-            chartTest.AddToChart(15);
-            chartTest.AddToChart(14);
-            chartTest.AddToChart(13);
-            chartTest.AddToChart(12);
-            chartTest.AddToChart(11);
-            chartTest.AddToChart(18);
+            chartTest.AddToChart("Pesho", 15);
+            chartTest.AddToChart("Pesho", 14);
+            chartTest.AddToChart("Pesho", 13);
+            chartTest.AddToChart("Pesho", 12);
+            chartTest.AddToChart("Pesho", 11);
+            chartTest.AddToChart("Pesho", 18);
 
             chartTest.SortChart();
 

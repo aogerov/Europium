@@ -34,15 +34,13 @@ namespace Balloons
             return isForChart;
         }
 
-        public void AddToChart(int userMoves)
+        public void AddToChart(string userName, int userMoves)
         {
             if (userMoves < 1)
             {
                 throw new ArgumentException("Invalid user moves count. User moves count should be bigger than 0.");
             }
 
-            Console.WriteLine("Type in your name.");
-            string userName = Console.ReadLine();
             this.chart.Add(new KeyValuePair<string, int>(userName, userMoves));
         }
 

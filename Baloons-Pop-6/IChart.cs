@@ -6,7 +6,7 @@ namespace Balloons
     {
         bool GoodEnoughForChart(int userMoves);
 
-        void AddToChart(int userMoves);
+        void AddToChart(string userName, int userMoves);
         
         void SortChart();
         

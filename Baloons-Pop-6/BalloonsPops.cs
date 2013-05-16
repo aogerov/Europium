@@ -81,7 +81,9 @@ namespace Balloons
                         bool isForChart = chart.GoodEnoughForChart(userMoves);
                         if (isForChart)
                         {
-                            chart.AddToChart(userMoves);
+                            Console.WriteLine("Type in your name.");
+                            string userName = Console.ReadLine();
+                            chart.AddToChart(userName, userMoves);
                             chart.SortChart();
                             chart.PrintChart();
                         }
