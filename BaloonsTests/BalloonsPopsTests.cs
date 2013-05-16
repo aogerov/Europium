@@ -94,5 +94,41 @@ namespace BalloonsTests
             int[,] matrix = new int[5, 5];
             BalloonsPops.ValidateInput(userInput, matrix);
         }
+
+        //CheckForBalloon Method Tests
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestUserInputNull()
+        {
+            string userInput = null;
+            int[,] matrix = new int[5, 10];
+            BalloonsPops.CheckForBaloon(userInput, matrix);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestUserInputStringEmpty()
+        {
+            string userInput = string.Empty;
+            int[,] matrix = new int[5, 10];
+            BalloonsPops.CheckForBaloon(userInput, matrix);
+        }
+
+        [TestMethod]
+        public void TestIsTrue()
+        {
+            string userInput = "1 1";
+            int[,] matrix = new int[2, 2]{{2,2},
+                                          {2,2}};
+            Assert.IsTrue(BalloonsPops.CheckForBaloon(userInput, matrix));
+        }
+
+        [TestMethod]
+        public void TestIsFalse()
+        {
+            string userInput = "0 0";
+            int[,] matrix = new int[5, 10];
+            Assert.IsFalse(BalloonsPops.CheckForBaloon(userInput, matrix));
+        }
     }
 }
