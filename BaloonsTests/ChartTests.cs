@@ -1,6 +1,7 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text;
 using Balloons;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BaloonsTests
 {
@@ -8,9 +9,93 @@ namespace BaloonsTests
     public class ChartTests
     {
         [TestMethod]
+        public void PrintChartTest()
+        {
+            Chart chartTest = new Chart();
+            chartTest.AddToChart(15);
+            chartTest.AddToChart(14);
+            chartTest.AddToChart(13);
+            chartTest.AddToChart(12);
+            chartTest.AddToChart(11);
+            chartTest.AddToChart(18);
+
+            string actual = chartTest.PrintChart();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("---------TOP FIVE CHART-----------\r\n");
+            sb.Append("1.    with 15 moves.\r\n");
+            sb.Append("2.    with 14 moves.\r\n");
+            sb.Append("3.    with 13 moves.\r\n");
+            sb.Append("4.    with 12 moves.\r\n");
+            sb.Append("5.    with 11 moves.\r\n");
+            sb.Append("6.    with 18 moves.\r\n");
+            sb.Append("----------------------------------");
+            string expected = sb.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void SortChartTest()
+        {
+            Chart chartTest = new Chart();
+            chartTest.AddToChart(15);
+            chartTest.AddToChart(14);
+            chartTest.AddToChart(13);
+            chartTest.AddToChart(12);
+            chartTest.AddToChart(11);
+            chartTest.AddToChart(18);
+
+            chartTest.SortChart();
+            string actual = chartTest.PrintChart();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("---------TOP FIVE CHART-----------\r\n");
+            sb.Append("1.    with 11 moves.\r\n");
+            sb.Append("2.    with 12 moves.\r\n");
+            sb.Append("3.    with 13 moves.\r\n");
+            sb.Append("4.    with 14 moves.\r\n");
+            sb.Append("5.    with 15 moves.\r\n");
+            sb.Append("----------------------------------");
+            string expected = sb.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void GoodEnoughForChartTest()
         {
-            Chart testChart = new Chart();
+            Chart chartTest = new Chart();
+            chartTest.AddToChart(15);
+            chartTest.AddToChart(14);
+            chartTest.AddToChart(13);
+            chartTest.AddToChart(12);
+            chartTest.AddToChart(11);
+            chartTest.AddToChart(18);
+
+            chartTest.SortChart();
+
+            bool actual = chartTest.GoodEnoughForChart(19);
+            bool expected = false;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GoodEnoughForChartTest2()
+        {
+            Chart chartTest = new Chart();
+            chartTest.AddToChart(15);
+            chartTest.AddToChart(14);
+            chartTest.AddToChart(13);
+            chartTest.AddToChart(12);
+            chartTest.AddToChart(11);
+            chartTest.AddToChart(18);
+
+            chartTest.SortChart();
+
+            bool actual = chartTest.GoodEnoughForChart(5);
+            bool expected = true;
+            Assert.AreEqual(expected, actual);
         }
     }
 }
