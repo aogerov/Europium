@@ -148,7 +148,7 @@ namespace Balloons
                 throw new ArgumentOutOfRangeException("Col need has to be in the range 0 to 9 incl.");
             }
 
-            if (!(userInput[1] != ' ' || userInput[1] != '.' || userInput[1] != ','))
+            if (!(userInput[1] == ' ' || userInput[1] == '.' || userInput[1] == ','))
             {
                 throw new ArgumentException("Invalid user separator, allowed values are ' ' , ',' and '.'");
             }
