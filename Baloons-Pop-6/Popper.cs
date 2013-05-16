@@ -74,7 +74,16 @@ namespace Balloons
 
         public static void ValidateInput(int[,] matrix, int row, int col, int searchedItem)
         {
+            if (matrix == null)
+            {
+                throw new ArgumentNullException("Matrix can't have null value.");
+            }
 
+            if (row < 0 || row >= matrix.GetLength(0) ||
+                col < 0 || col >= matrix.GetLength(1))
+            {
+                throw new IndexOutOfRangeException("Row and col indexes has to be in the range of the matrix.");
+            }
         }
     }
 }
