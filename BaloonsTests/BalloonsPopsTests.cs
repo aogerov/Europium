@@ -130,5 +130,70 @@ namespace BalloonsTests
             int[,] matrix = new int[5, 10];
             Assert.IsFalse(BalloonsPops.CheckForBaloon(userInput, matrix));
         }
+
+        //PopBalloons Method Tests
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestInputNull()
+        {
+            string userInput = null;
+            int[,] matrix = new int[5, 10];
+            BalloonsPops.PopBaloons(userInput,ref matrix);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestInputStringEmpty()
+        {
+            string userInput = string.Empty;
+            int[,] matrix = new int[5, 10];
+            BalloonsPops.PopBaloons(userInput,ref matrix);
+        }
+
+        [TestMethod]
+        public void CheckPopBalloons()
+        {
+            string input = "1 1";
+            int[,] actual = new int[,]   {{1,3,5},
+                                          {3,3,4},
+                                          {2,3,8}};
+
+            int[,] excepted = new int[,]  {{0,0,5},
+                                           {1,0,4},
+                                           {2,0,8}};
+
+            BalloonsPops.PopBaloons(input,ref actual);
+
+            for (int row = 0; row < 3; row++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    Assert.AreEqual(excepted[row,col], actual[row,col]);
+                }
+            }
+        }
+
+        //CheckForGameOver Method Test
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MatrixNull()
+        {
+            int[,] matrix = null;
+            BalloonsPops.CheckForGameOver(matrix);
+        }
+
+        [TestMethod]
+        public void GameOverIsTrue()
+        {
+            int[,] matrix = new int[,]{{0,0},{0,0}};
+            Assert.IsTrue(BalloonsPops.CheckForGameOver(matrix));
+        }
+
+        [TestMethod]
+        public void GameOverIsFalse()
+        {
+            int[,] matrix = new int[, ]{{2,2},{2,2}};
+            Assert.IsFalse(BalloonsPops.CheckForGameOver(matrix));
+        }
     }
 }
