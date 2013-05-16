@@ -10,6 +10,6 @@ namespace Balloons
         
         void SortChart();
         
-        void PrintChart();
+        string PrintChart();
     }
 }
