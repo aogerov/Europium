@@ -195,5 +195,26 @@ namespace BalloonsTests
             int[,] matrix = new int[, ]{{2,2},{2,2}};
             Assert.IsFalse(BalloonsPops.CheckForGameOver(matrix));
         }
+
+        //PrintBoard
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void PrintBoardNullMatrix()
+        {
+            int[,] matrix = null;
+            BalloonsPops.CheckForGameOver(matrix);
+        }
+
+        //ProccessGame
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ProccessGameValidation()
+        {
+            string userInput = null;
+            int[,] matrix = null;
+            IChart chart = null;
+            int userMoves = 2;
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+        }
     }
 }
