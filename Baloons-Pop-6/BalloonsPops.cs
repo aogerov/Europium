@@ -154,13 +154,13 @@ namespace Balloons
             }
 
             int row = int.Parse(userInput[0].ToString());
-            if (row > matrix.GetLength(0))
+            if (row >= matrix.GetLength(0))
             {
                 throw new ArgumentOutOfRangeException("Row value should be lower than matrix row length.");
             }
             
             int col = int.Parse(userInput[2].ToString());
-            if (col > matrix.GetLength(1))
+            if (col >= matrix.GetLength(1))
             {
                 throw new ArgumentOutOfRangeException("Col value should be lower than matrix row length.");
             }

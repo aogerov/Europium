@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Balloons;
 
-namespace BaloonsTests
+namespace BalloonsTests
 {
     [TestClass]
     public class BalloonsPopsTests
@@ -37,8 +37,17 @@ namespace BaloonsTests
         public void TestIfNull()
         {
             string userInput = null;
-            int[,] matrix = new int[5,10];
+            int[,] matrix = new int[5, 10];
             BalloonsPops.ValidateInput(userInput,matrix);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestStringEmpty()
+        {
+            string userInput = string.Empty;
+            int[,] matrix = new int[5, 10];
+            BalloonsPops.ValidateInput(userInput, matrix);
         }
 
         [TestMethod]
@@ -63,10 +72,27 @@ namespace BaloonsTests
         [ExpectedException(typeof(ArgumentException))]
         public void TestSerarators()
         {
-            string userInput = "3|5";
+            string userInput = "3/5";
             int[,] matrix = new int[5, 10];
             BalloonsPops.ValidateInput(userInput, matrix);
         }
-    
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestUserInputRows()
+        {
+            string userInput = "5 5";
+            int[,] matrix = new int[5, 10];
+            BalloonsPops.ValidateInput(userInput, matrix);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestUserInputCols()
+        {
+            string userInput = "2 5";
+            int[,] matrix = new int[5, 5];
+            BalloonsPops.ValidateInput(userInput, matrix);
+        }
     }
 }
