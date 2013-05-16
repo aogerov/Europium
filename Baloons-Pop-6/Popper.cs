@@ -6,6 +6,8 @@ namespace Balloons
     {
         public static void TryPopLeft(int[,] matrix, int row, int col, int searchedItem)
         {
+            ValidateInput(matrix, row, col, searchedItem);
+
             int rowForPop = row;
             int colForPop = col - 1;
 
@@ -21,6 +23,8 @@ namespace Balloons
 
         public static void TryPopRight(int[,] matrix, int row, int col, int searchedItem)
         {
+            ValidateInput(matrix, row, col, searchedItem);
+
             int rowForPop = row;
             int colForPop = col + 1;
 
@@ -36,6 +40,8 @@ namespace Balloons
 
         public static void TryPopUp(int[,] matrix, int row, int col, int searchedItem)
         {
+            ValidateInput(matrix, row, col, searchedItem);
+
             int rowForPop = row - 1;
             int colForPop = col;
 
@@ -51,6 +57,8 @@ namespace Balloons
 
         public static void TryPopDown(int[,] matrix, int row, int col, int searchedItem)
         {
+            ValidateInput(matrix, row, col, searchedItem);
+
             int rowForPop = row + 1;
             int colForPop = col;
 
@@ -62,6 +70,11 @@ namespace Balloons
                     TryPopDown(matrix, rowForPop, colForPop, searchedItem);
                 }
             }
+        }
+
+        public static void ValidateInput(int[,] matrix, int row, int col, int searchedItem)
+        {
+
         }
     }
 }
