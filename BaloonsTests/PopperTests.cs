@@ -103,9 +103,19 @@ namespace BaloonsTests
             }
         }
 
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TryArgumentTest()
+        {
+            int[,] matrixTest = null;
+
+            Popper.TryPopDown(matrixTest, 1, 1, 4);
+        }
+
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void TryPopDownTest2()
+        public void TryPopOutOfRangeTest()
         {
             int[,] matrixTest = new int[,]{
                 { 4, 6, 5},
@@ -113,20 +123,6 @@ namespace BaloonsTests
             };
 
             Popper.TryPopDown(matrixTest, -2, -3, 4);
-
-            int[,] expected = new int[,]{
-                { 4, 6, 5},
-                { 3, 0, 4}
-            };
-
-            for (int i = 0; i < matrixTest.GetLength(0); i++)
-            {
-                for (int j = 0; j < matrixTest.GetLength(1); j++)
-                {
-                    Assert.AreEqual(expected[i, j], matrixTest[i, j]);
-                }
-            }
         }
-        
     }
 }
