@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Balloons
 {
@@ -45,17 +46,20 @@ namespace Balloons
             }
         }
 
-        public void PrintChart()
+        public string PrintChart()
         {
-            Console.WriteLine("---------TOP FIVE CHART-----------");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("---------TOP FIVE CHART-----------\r\n");
 
             for (int i = 0; i < this.chart.Count; ++i)
             {
                 KeyValuePair<string, int> currentStanding = this.chart[i];
-                Console.WriteLine("{0}.   {1} with {2} moves.", i + 1, currentStanding.Key, currentStanding.Value);
+                string line = string.Format("{0}.   {1} with {2} moves.\r\n", i + 1, currentStanding.Key, currentStanding.Value);
+                sb.Append(line);
             }
 
-            Console.WriteLine("----------------------------------");
+            sb.Append("----------------------------------");
+            return sb.ToString();
         }
     }
 }
