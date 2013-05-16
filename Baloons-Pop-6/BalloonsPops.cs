@@ -168,6 +168,11 @@ namespace Balloons
 
         public static bool CheckForBaloon(string userInput, int[,] matrix)
         {
+            if (userInput == null || matrix == null || userInput == string.Empty)
+            {
+                throw new ArgumentException("User input is empty or has null value.");
+            }
+
             int row = int.Parse(userInput[0].ToString());
             int col = int.Parse(userInput[2].ToString());
             bool baloonExists = true;
@@ -182,6 +187,11 @@ namespace Balloons
 
         public static void PopBaloons(string userInput, ref int[,] matrix)
         {
+            if (userInput == null || matrix == null || userInput == string.Empty)
+            {
+                throw new ArgumentException("User input is empty or has null value.");
+            }
+
             int row = int.Parse(userInput[0].ToString());
             int col = int.Parse(userInput[2].ToString());
             int searchedTarget = matrix[row, col];
@@ -197,6 +207,11 @@ namespace Balloons
 
         public static bool CheckForGameOver(int[,] matrix)
         {
+            if (matrix == null)
+            {
+                throw new ArgumentNullException("Matrix can't have null value.");
+            }
+
             bool isWinner = true;
 
             for (int row = 0; row < matrix.GetLength(0); row++)
