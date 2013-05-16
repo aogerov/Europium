@@ -7,7 +7,11 @@ namespace Balloons
     {
         public static int[,] Generate(int rows, int cols, int startValue, int endValue)
         {
-            //throw exeption for negative values or missing ones
+            if (rows < 0 || cols < 0)
+            {
+                throw new ArgumentException("Rows and cols can't have negative value.");
+            }
+
             int[,] matrix = new int[rows, cols];
             Random randNumber = new Random();
             
@@ -25,6 +29,11 @@ namespace Balloons
 
         public static int[,] DropDownBaloons(int[,] matrix)
         {
+            if (matrix == null)
+            {
+                throw new ArgumentNullException("Matrix can't have null value.");
+            }
+
             int rowLength = matrix.GetLength(0);
             int colLength = matrix.GetLength(1);
 
@@ -49,6 +58,11 @@ namespace Balloons
 
         public static string AsString(int[,] matrix)
         {
+            if (matrix == null)
+            {
+                throw new ArgumentNullException("Matrix can't have null value.");
+            }
+
             StringBuilder sb = new StringBuilder();
 
             sb.Append("    ");
