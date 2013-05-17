@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Balloons;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BalloonsTests
 {
@@ -198,11 +200,11 @@ namespace BalloonsTests
 
         //PrintBoard
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void PrintBoardNullMatrix()
         {
             int[,] matrix = null;
-            BalloonsPops.CheckForGameOver(matrix);
+            BalloonsPops.PrintBoard(matrix);
         }
 
         //ProccessGame
@@ -213,6 +215,73 @@ namespace BalloonsTests
             string userInput = null;
             int[,] matrix = null;
             IChart chart = null;
+            int userMoves = 2;
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+        }
+
+        [TestMethod]
+        public void ProccessGameDeleteUserMoves()
+        {
+            string userInput = "RESTART";
+            int[,] matrix = new int[5,10];
+            IChart chart = new Chart();
+            int userMoves = 2;
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+            Assert.AreEqual(0, userMoves);
+        }
+
+        [TestMethod]
+        public void ProccessGameRestartRows()
+        {
+            string userInput = "RESTART";
+            int[,] matrix = new int[5,10];
+            IChart chart = new Chart();
+            int userMoves = 2;
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+            Assert.AreEqual(5, matrix.GetLength(0));
+        }
+
+        [TestMethod]
+        public void ProccessGameRestartCols()
+        {
+            string userInput = "RESTART";
+            int[,] matrix = new int[5,10];
+            IChart chart = new Chart();
+            int userMoves = 2;
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+            Assert.AreEqual(10, matrix.GetLength(1));
+        }
+        
+        //Case Exit
+        [TestMethod]
+        public void ProccessGameExit()
+        {
+            string userInput = "EXIT";
+            int[,] matrix = new int[5, 10];
+            IChart chart = new Chart();
+            int userMoves = 2;
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+        }
+
+        //Case Exit
+        [TestMethod]
+        public void ProccessGameTop()
+        {
+            string userInput = "TOP";
+            int[,] matrix = new int[5, 10];
+            IChart chart = new Chart();
+            int userMoves = 2;
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+        }
+
+        //Default
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ProccessGameTestDefaultIncorrectUserInput()
+        {
+            string userInput = "1234";
+            int[,] matrix = new int[5, 10];
+            IChart chart = new Chart();
             int userMoves = 2;
             BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
