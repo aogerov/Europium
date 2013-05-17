@@ -123,51 +123,6 @@ namespace Balloons
             Console.WriteLine(matrixAsString);
         }
 
-        public static void ValidateInput(string userInput, int[,] matrix)
-        {
-            if (userInput == null || matrix == null)
-            {
-                throw new ArgumentNullException("Input can't have null value.");
-            }
-
-            if (userInput == string.Empty)
-            {
-                throw new ArgumentException("User input is empty.");
-            }
-
-            if (userInput.Length != 3)
-            {
-                throw new ArgumentException("Row and col selection should have lenght 3.");
-            }
-
-            if (userInput[0] < '0' || userInput[0] > '9')
-            {
-                throw new ArgumentOutOfRangeException("Row need has to be in the range 0 to 9 incl.");
-            }
-
-            if (userInput[2] < '0' && userInput[2] > '9')
-            {
-                throw new ArgumentOutOfRangeException("Col need has to be in the range 0 to 9 incl.");
-            }
-
-            if (!(userInput[1] == ' ' || userInput[1] == '.' || userInput[1] == ','))
-            {
-                throw new ArgumentException("Invalid user separator, allowed values are ' ' , ',' and '.'");
-            }
-
-            int row = int.Parse(userInput[0].ToString());
-            if (row >= matrix.GetLength(0))
-            {
-                throw new ArgumentOutOfRangeException("Row value should be lower than matrix row length.");
-            }
-            
-            int col = int.Parse(userInput[2].ToString());
-            if (col >= matrix.GetLength(1))
-            {
-                throw new ArgumentOutOfRangeException("Col value should be lower than matrix row length.");
-            }
-        }
-
         public static bool CheckForBaloon(string userInput, int[,] matrix)
         {
             if (userInput == null || matrix == null || userInput == string.Empty)
@@ -228,6 +183,51 @@ namespace Balloons
             }
 
             return isWinner;
+        }
+
+        private static void ValidateInput(string userInput, int[,] matrix)
+        {
+            if (userInput == null || matrix == null)
+            {
+                throw new ArgumentNullException("Input can't have null value.");
+            }
+
+            if (userInput == string.Empty)
+            {
+                throw new ArgumentException("User input is empty.");
+            }
+
+            if (userInput.Length != 3)
+            {
+                throw new ArgumentException("Row and col selection should have lenght 3.");
+            }
+
+            if (userInput[0] < '0' || userInput[0] > '9')
+            {
+                throw new ArgumentOutOfRangeException("Row need has to be in the range 0 to 9 incl.");
+            }
+
+            if (userInput[2] < '0' && userInput[2] > '9')
+            {
+                throw new ArgumentOutOfRangeException("Col need has to be in the range 0 to 9 incl.");
+            }
+
+            if (!(userInput[1] == ' ' || userInput[1] == '.' || userInput[1] == ','))
+            {
+                throw new ArgumentException("Invalid user separator, allowed values are ' ' , ',' and '.'");
+            }
+
+            int row = int.Parse(userInput[0].ToString());
+            if (row >= matrix.GetLength(0))
+            {
+                throw new ArgumentOutOfRangeException("Row value should be lower than matrix row length.");
+            }
+
+            int col = int.Parse(userInput[2].ToString());
+            if (col >= matrix.GetLength(1))
+            {
+                throw new ArgumentOutOfRangeException("Col value should be lower than matrix row length.");
+            }
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Balloons;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BalloonsTests
 {
@@ -13,7 +11,7 @@ namespace BalloonsTests
         [TestMethod]
         public void TestRows()
         {
-            int[,] matrix = new int[5,10];
+            int[,] matrix = new int[5, 10];
             var actual = BalloonsPops.GenerateBoard();
             Assert.AreEqual(matrix.GetLength(0), actual.GetLength(0));
         }
@@ -39,17 +37,29 @@ namespace BalloonsTests
         public void TestIfNull()
         {
             string userInput = null;
-            int[,] matrix = new int[5, 10];
-            BalloonsPops.ValidateInput(userInput,matrix);
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {0,0},
+                {0,1}
+            };
+
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void TestStringEmpty()
         {
             string userInput = string.Empty;
-            int[,] matrix = new int[5, 10];
-            BalloonsPops.ValidateInput(userInput, matrix);
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {0,0},
+                {0,1}
+            };
+
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
 
         [TestMethod]
@@ -57,8 +67,14 @@ namespace BalloonsTests
         public void TestInputLenght()
         {
             string userInput = "1234";
-            int[,] matrix = new int[5, 10];
-            BalloonsPops.ValidateInput(userInput, matrix);
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {0,0},
+                {0,1}
+            };
+
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
 
         [TestMethod]
@@ -66,8 +82,14 @@ namespace BalloonsTests
         public void TestNegativeInput()
         {
             string userInput = "-65";
-            int[,] matrix = new int[5, 10];
-            BalloonsPops.ValidateInput(userInput, matrix);
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {0,0},
+                {0,1}
+            };
+
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
 
         [TestMethod]
@@ -75,8 +97,14 @@ namespace BalloonsTests
         public void TestSerarators()
         {
             string userInput = "3/5";
-            int[,] matrix = new int[5, 10];
-            BalloonsPops.ValidateInput(userInput, matrix);
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {0,0},
+                {0,1}
+            };
+
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
 
         [TestMethod]
@@ -84,8 +112,14 @@ namespace BalloonsTests
         public void TestUserInputRows()
         {
             string userInput = "5 5";
-            int[,] matrix = new int[5, 10];
-            BalloonsPops.ValidateInput(userInput, matrix);
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {0,0},
+                {0,1}
+            };
+
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
 
         [TestMethod]
@@ -93,8 +127,14 @@ namespace BalloonsTests
         public void TestUserInputCols()
         {
             string userInput = "2 5";
-            int[,] matrix = new int[5, 5];
-            BalloonsPops.ValidateInput(userInput, matrix);
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {0,0},
+                {0,1}
+            };
+
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
 
         //CheckForBalloon Method Tests
@@ -140,7 +180,7 @@ namespace BalloonsTests
         {
             string userInput = null;
             int[,] matrix = new int[5, 10];
-            BalloonsPops.PopBaloons(userInput,ref matrix);
+            BalloonsPops.PopBaloons(userInput, ref matrix);
         }
 
         [TestMethod]
@@ -149,7 +189,7 @@ namespace BalloonsTests
         {
             string userInput = string.Empty;
             int[,] matrix = new int[5, 10];
-            BalloonsPops.PopBaloons(userInput,ref matrix);
+            BalloonsPops.PopBaloons(userInput, ref matrix);
         }
 
         [TestMethod]
@@ -164,13 +204,13 @@ namespace BalloonsTests
                                            {1,0,4},
                                            {2,0,8}};
 
-            BalloonsPops.PopBaloons(input,ref actual);
+            BalloonsPops.PopBaloons(input, ref actual);
 
             for (int row = 0; row < 3; row++)
             {
                 for (int col = 0; col < 3; col++)
                 {
-                    Assert.AreEqual(excepted[row,col], actual[row,col]);
+                    Assert.AreEqual(excepted[row, col], actual[row, col]);
                 }
             }
         }
@@ -187,14 +227,14 @@ namespace BalloonsTests
         [TestMethod]
         public void GameOverIsTrue()
         {
-            int[,] matrix = new int[,]{{0,0},{0,0}};
+            int[,] matrix = new int[,] { { 0, 0 }, { 0, 0 } };
             Assert.IsTrue(BalloonsPops.CheckForGameOver(matrix));
         }
 
         [TestMethod]
         public void GameOverIsFalse()
         {
-            int[,] matrix = new int[, ]{{2,2},{2,2}};
+            int[,] matrix = new int[,] { { 2, 2 }, { 2, 2 } };
             Assert.IsFalse(BalloonsPops.CheckForGameOver(matrix));
         }
 
@@ -223,7 +263,7 @@ namespace BalloonsTests
         public void ProccessGameDeleteUserMoves()
         {
             string userInput = "RESTART";
-            int[,] matrix = new int[5,10];
+            int[,] matrix = new int[5, 10];
             IChart chart = new Chart();
             int userMoves = 2;
             BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
@@ -234,7 +274,7 @@ namespace BalloonsTests
         public void ProccessGameRestartRows()
         {
             string userInput = "RESTART";
-            int[,] matrix = new int[5,10];
+            int[,] matrix = new int[5, 10];
             IChart chart = new Chart();
             int userMoves = 2;
             BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
@@ -245,13 +285,13 @@ namespace BalloonsTests
         public void ProccessGameRestartCols()
         {
             string userInput = "RESTART";
-            int[,] matrix = new int[5,10];
+            int[,] matrix = new int[5, 10];
             IChart chart = new Chart();
             int userMoves = 2;
             BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
             Assert.AreEqual(10, matrix.GetLength(1));
         }
-        
+
         //Case Exit
         [TestMethod]
         public void ProccessGameExit()
@@ -283,6 +323,34 @@ namespace BalloonsTests
             int[,] matrix = new int[5, 10];
             IChart chart = new Chart();
             int userMoves = 2;
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+        }
+
+        [TestMethod]
+        public void TestWorkflowPopBaloon()
+        {
+            string userInput = "1 1";
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {1,2},
+                {3,4}
+            };
+
+            BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
+        }
+
+        [TestMethod]
+        public void TestWorkflowPopBaloonFail()
+        {
+            string userInput = "1 1";
+            int userMoves = 1;
+            IChart chart = new Chart();
+            int[,] matrix = new int[2, 2] {
+                {1,2},
+                {3,0}
+            };
+
             BalloonsPops.ProcessGame(userInput, ref matrix, chart, ref userMoves);
         }
     }
