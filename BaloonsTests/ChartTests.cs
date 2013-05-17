@@ -23,12 +23,12 @@ namespace BaloonsTests
 
             StringBuilder sb = new StringBuilder();
             sb.Append("---------TOP FIVE CHART-----------\r\n");
-            sb.Append("1.    with 15 moves.\r\n");
-            sb.Append("2.    with 14 moves.\r\n");
-            sb.Append("3.    with 13 moves.\r\n");
-            sb.Append("4.    with 12 moves.\r\n");
-            sb.Append("5.    with 11 moves.\r\n");
-            sb.Append("6.    with 18 moves.\r\n");
+            sb.Append("1.   Pesho with 15 moves.\r\n");
+            sb.Append("2.   Pesho with 14 moves.\r\n");
+            sb.Append("3.   Pesho with 13 moves.\r\n");
+            sb.Append("4.   Pesho with 12 moves.\r\n");
+            sb.Append("5.   Pesho with 11 moves.\r\n");
+            sb.Append("6.   Pesho with 18 moves.\r\n");
             sb.Append("----------------------------------");
             string expected = sb.ToString();
 
@@ -51,11 +51,11 @@ namespace BaloonsTests
 
             StringBuilder sb = new StringBuilder();
             sb.Append("---------TOP FIVE CHART-----------\r\n");
-            sb.Append("1.    with 11 moves.\r\n");
-            sb.Append("2.    with 12 moves.\r\n");
-            sb.Append("3.    with 13 moves.\r\n");
-            sb.Append("4.    with 14 moves.\r\n");
-            sb.Append("5.    with 15 moves.\r\n");
+            sb.Append("1.   Pesho with 11 moves.\r\n");
+            sb.Append("2.   Pesho with 12 moves.\r\n");
+            sb.Append("3.   Pesho with 13 moves.\r\n");
+            sb.Append("4.   Pesho with 14 moves.\r\n");
+            sb.Append("5.   Pesho with 15 moves.\r\n");
             sb.Append("----------------------------------");
             string expected = sb.ToString();
 
